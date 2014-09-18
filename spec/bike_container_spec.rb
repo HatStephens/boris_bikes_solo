@@ -15,7 +15,6 @@ describe BikeContainer do
 	end
 
 	it 'should be able to receive a bike' do
-<<<<<<< HEAD
 		bike = double :bike, is_a?: :true
 		expect{station.dock(bike)}.to change{station.bike_count}.by(1)
 	end
@@ -36,12 +35,6 @@ describe BikeContainer do
 
 		expect{station.release(bike)}.to change{station.bike_count}.by(-1)
 	end
-=======
-		bike = double :bike
-		allow(bike).to receive(:count)
-		expect{station.dock(bike)}.to change{station.bike_count}.by(1)
-	end
 
->>>>>>> 1415f9deae40747b6bc1d9d36b79b79542aba703
 
 end

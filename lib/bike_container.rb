@@ -13,7 +13,6 @@ module BikeContainer
 	# end
 
 	def bike_count
-<<<<<<< HEAD
 		@bikes.count
 	end
 
@@ -25,12 +24,5 @@ module BikeContainer
 	def release(bike)
 		@bikes.delete(bike)
 	end
-=======
-		@bikes.length
-	end
 
-	def dock(bike)
-	 	@bikes << bike
-	end
->>>>>>> 1415f9deae40747b6bc1d9d36b79b79542aba703
 end
