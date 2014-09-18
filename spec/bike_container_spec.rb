@@ -92,4 +92,14 @@ describe BikeContainer do
 	it 'should not release nothing' do
 		expect{station.release()}.to raise_error(RuntimeError)
 	end
+
+	it 'should not release a bike if empty to a person' do
+		bike = double :bike, is_a?: true
+		expect{station.release_to_person(bike)}.to raise_error(RuntimeError)
+	end
+
+	it 'should not release a bike if empty to another container' do
+		bike = double :bike, is_a?: true
+		expect{station.release(bike)}.to raise_error(RuntimeError)
+	end
 end

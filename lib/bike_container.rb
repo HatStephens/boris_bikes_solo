@@ -30,11 +30,13 @@ module BikeContainer
 
 	def release(bike=nil)
 		raise "You have not requested a bike." if !bike.is_a? Bike
+		raise "No bikes left." if empty?
 		bikes.delete(bike)
 	end
 
 	def release_to_person(bike=nil)
 		raise "You have not requested a bike." if !bike.is_a? Bike
+		raise "No bikes left." if empty?
 		!bike.broken? ? bikes.delete(bike) : "No available bikes."
 	end
 
@@ -48,6 +50,10 @@ module BikeContainer
 
 	def full?
 		capacity == bike_count
+	end
+
+	def empty?
+		bike_count == 0
 	end
 
 end
