@@ -28,8 +28,14 @@ module BikeContainer
 	 	bikes << bike
 	end
 
-	def release(bike)
+	def release(bike=nil)
+		raise "You have not requested a bike." if !bike.is_a? Bike
 		bikes.delete(bike)
+	end
+
+	def release_to_person(bike=nil)
+		raise "You have not requested a bike." if !bike.is_a? Bike
+		!bike.broken? ? bikes.delete(bike) : "No available bikes."
 	end
 
 	def available_bikes

@@ -35,6 +35,20 @@ describe BikeContainer do
 		expect{station.release(bike)}.to change{station.bike_count}.by(-1)
 	end
 
+	it 'should not release broken bikes to a person' do
+		bike = double :bike, is_a?: :true
+		allow(bike).to receive(:broken?).and_return(true)
+		station.dock(bike)
+		expect{station.release_to_person(bike)}.to change{station.bike_count}.by(0)
+	end
+
+	it 'should release an available bike to a person' do
+		bike = double :bike, is_a?: :true
+		allow(bike).to receive(:broken?).and_return(false)
+		station.dock(bike)
+		expect{station.release_to_person(bike)}.to change{station.bike_count}.by(-1)
+	end
+
 	it 'should know which bikes are available' do
 		bike = double :bike, is_a?: :true
 		station.dock(bike)
@@ -71,4 +85,11 @@ describe BikeContainer do
 		expect{station.dock(bike)}.to raise_error(RuntimeError)	
 	end
 
+	it 'should only release a bike' do
+		expect{station.release(:object)}.to raise_error(RuntimeError)
+	end
+
+	it 'should not release nothing' do
+		expect{station.release()}.to raise_error(RuntimeError)
+	end
 end
