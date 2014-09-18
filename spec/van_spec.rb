@@ -7,7 +7,7 @@ describe Van do
 
 	it 'should be able to dock all broken bikes from dock' do
 		station = double :station, release: nil
-		bike = double :bike
+		bike = double :bike, is_a?: :true
 		allow(station).to receive(:broken_bikes).and_return([bike])
 		allow(bike).to receive(:each).and_return(:bike)
 

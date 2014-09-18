@@ -9,7 +9,7 @@ class Van
 
 	def collect_broken_bikes(station)
 		station.broken_bikes.each do |bike|
-			bikes << bike
+			dock(bike)
 			station.release(bike)
 		end
 	end
