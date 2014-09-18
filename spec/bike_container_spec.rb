@@ -59,4 +59,16 @@ describe BikeContainer do
 		expect(station.capacity).to eq(10)
 	end
 
+	it 'should know that it is full' do
+		bike = double :bike, is_a?: :true
+		10.times{station.dock(bike)}
+		expect(station.full?).to eq(true)
+	end
+
+	it 'should not allow docking if it is full' do	
+		bike = double :bike, is_a?: :true
+		10.times{station.dock(bike)}
+		expect{station.dock(bike)}.to raise_error(RuntimeError)	
+	end
+
 end

@@ -24,6 +24,7 @@ module BikeContainer
 
 	def dock(bike=nil)
 		raise "This is not a bike." if !bike.is_a? Bike
+		raise "Cannot dock because I am full." if full?
 	 	bikes << bike
 	end
 
@@ -37,6 +38,10 @@ module BikeContainer
 
 	def broken_bikes
 		bikes.select { |bike| bike.broken? }
+	end
+
+	def full?
+		capacity == bike_count
 	end
 
 end
