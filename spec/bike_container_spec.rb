@@ -1,5 +1,5 @@
 require 'bike_container'
-require 'bike'
+
 
 class Station; include BikeContainer end
 
@@ -58,7 +58,5 @@ describe BikeContainer do
 	it 'should have a default capacity' do
 		expect(station.capacity).to eq(10)
 	end
-
-
 
 end
