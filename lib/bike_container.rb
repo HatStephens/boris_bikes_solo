@@ -4,11 +4,10 @@ module BikeContainer
 	
 	DEFAULT_CAPACITY = 10
 
-	attr_reader :bikes #:capacity
 	attr_writer :capacity
 
-	def initialize
-		@bikes = []
+	def bikes
+		@bikes ||= []
 	end
 
 	# def bikes
@@ -20,24 +19,24 @@ module BikeContainer
 	end
 
 	def bike_count
-		@bikes.count
+		bikes.count
 	end
 
 	def dock(bike=nil)
 		raise "This is not a bike." if !bike.is_a? Bike
-	 	@bikes << bike
+	 	bikes << bike
 	end
 
 	def release(bike)
-		@bikes.delete(bike)
+		bikes.delete(bike)
 	end
 
 	def available_bikes
-		@bikes.reject { |bike| bike.broken? }
+		bikes.reject { |bike| bike.broken? }
 	end
 
 	def broken_bikes
-		@bikes.select { |bike| bike.broken? }
+		bikes.select { |bike| bike.broken? }
 	end
 
 end
