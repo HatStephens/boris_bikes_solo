@@ -30,11 +30,27 @@ describe BikeContainer do
 
 	it 'should be able to release bikes' do
 		bike = double :bike, is_a?: :true
-		allow(bike).to receive(:dock)
 		station.dock(bike)
 
 		expect{station.release(bike)}.to change{station.bike_count}.by(-1)
 	end
+
+	it 'should know which bikes are available' do
+		bike = double :bike, is_a?: :true
+		station.dock(bike)
+		allow(bike).to receive(:broken?).and_return(true)
+
+		expect(station.available_bikes.count).to eq(0) 
+	end
+
+	it 'should know which bikes are broken' do
+		bike = double :bike, is_a?: :true
+		station.dock(bike)
+		allow(bike).to receive(:broken?).and_return(true)
+
+		expect(station.broken_bikes.count).to eq(1)
+	end
+
 
 
 end
