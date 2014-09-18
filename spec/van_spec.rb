@@ -14,7 +14,7 @@ describe Van do
 		expect{van.collect_broken_bikes(station)}.to change{van.bike_count}.by(1)
 	end
 
-	it 'should be able to set its own capacity' do
+	it 'should be able to set its own capacity when created' do
 		expect(van.capacity).to eq(200)
 	end
 
