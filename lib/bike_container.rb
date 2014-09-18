@@ -2,7 +2,9 @@ require_relative 'bike'
 
 module BikeContainer
 	
-	attr_reader :bikes, :capacity
+	DEFAULT_CAPACITY = 10
+
+	attr_reader :bikes #:capacity
 	attr_writer :capacity
 
 	def initialize
@@ -12,6 +14,10 @@ module BikeContainer
 	# def bikes
 	# 	@bikes
 	# end
+
+	def capacity
+		@capacity ||= DEFAULT_CAPACITY
+	end
 
 	def bike_count
 		@bikes.count

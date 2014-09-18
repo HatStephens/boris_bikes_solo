@@ -52,7 +52,11 @@ describe BikeContainer do
 	end
 
 	it 'should be able to receive a capacity' do
-		expect{station.capacity=(10)}.to change{station.capacity}.to eq(10)
+		expect{station.capacity=(100)}.to change{station.capacity}.to eq(100)
+	end
+
+	it 'should have a default capacity' do
+		expect(station.capacity).to eq(10)
 	end
 
 
