@@ -1,5 +1,5 @@
-1# Makers Academy Boris Bikes Project
-4# An attempt to complete this alone
+#1 Makers Academy Boris Bikes Project
+#4 An attempt to complete this alone
 
 To Do List
 - [ ] Classes for Bike, Van, DockingStation, Garage
