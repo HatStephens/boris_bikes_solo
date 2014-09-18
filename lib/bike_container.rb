@@ -2,7 +2,8 @@ require_relative 'bike'
 
 module BikeContainer
 	
-	attr_reader :bikes
+	attr_reader :bikes, :capacity
+	attr_writer :capacity
 
 	def initialize
 		@bikes = []

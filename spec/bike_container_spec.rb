@@ -51,6 +51,10 @@ describe BikeContainer do
 		expect(station.broken_bikes.count).to eq(1)
 	end
 
+	it 'should be able to receive a capacity' do
+		expect{station.capacity=(10)}.to change{station.capacity}.to eq(10)
+	end
+
 
 
 end
