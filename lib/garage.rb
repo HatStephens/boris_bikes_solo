@@ -10,7 +10,7 @@ class Garage
 	def fetch_and_fix(van)
 		van.bikes.each do |bike|
 			van.release(bike)
-			self.dock(bike.fix!)
+			dock(bike.fix!)
 		end
 	end
 end
