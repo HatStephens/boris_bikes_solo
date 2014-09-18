@@ -13,10 +13,15 @@ module BikeContainer
 	# end
 
 	def bike_count
-		@bikes.length
+		@bikes.count
 	end
 
-	def dock(bike)
+	def dock(bike=nil)
+		raise "This is not a bike." if !bike.is_a? Bike
 	 	@bikes << bike
+	end
+
+	def release(bike)
+		@bikes.delete(bike)
 	end
 end

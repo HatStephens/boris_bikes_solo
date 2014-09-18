@@ -15,10 +15,25 @@ describe BikeContainer do
 	end
 
 	it 'should be able to receive a bike' do
-		bike = double :bike
-		allow(bike).to receive(:count)
+		bike = double :bike, is_a?: :true
 		expect{station.dock(bike)}.to change{station.bike_count}.by(1)
 	end
 
+	it 'should raise an error if person tries to dock another object' do
+		object = double :object
+		expect{station.dock(object)}.to raise_error(RuntimeError)
+	end
+
+	it 'should raise an error if person tries to dock nothing' do
+		expect{station.dock()}.to raise_error(RuntimeError)
+	end
+
+	it 'should be able to release bikes' do
+		bike = double :bike, is_a?: :true
+		allow(bike).to receive(:dock)
+		station.dock(bike)
+
+		expect{station.release(bike)}.to change{station.bike_count}.by(-1)
+	end
 
 end
